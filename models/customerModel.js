@@ -24,6 +24,10 @@ const customerSchema = mongoose.Schema({
     default:[],
   }],
   contact : Number,
+  verified : {
+    type : Boolean,
+    default : false
+  }
 });
 
 module.exports = mongoose.model("customer",customerSchema)

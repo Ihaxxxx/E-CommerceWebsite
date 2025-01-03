@@ -27,3 +27,10 @@ description - str
 completed - Boolean
 date
 
+admin panel
+dashboard
+    1 product Adder
+    2 current Producs
+    3 current Orders 
+    4 past orders 
+    

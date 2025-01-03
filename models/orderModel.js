@@ -5,6 +5,7 @@ const orderSchema = mongoose.Scheme({
         type : mongoose.Schema.Types.ObjectId,
         ref : "customer"
     },
+    orderNo : Number,
     productDetails: [
         {
             product: {
@@ -21,13 +22,14 @@ const orderSchema = mongoose.Scheme({
     ],
     orderDate: {
         type: Date,
-        default: Date.now, // Automatically set the order date
+        default: Date.now,
     },
     orderDescription:{
         type : String,
     },
     completed : {
         type : Boolean,
+        default : false,
     },
 })
 

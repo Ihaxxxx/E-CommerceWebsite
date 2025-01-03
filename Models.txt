@@ -1,0 +1,29 @@
+customerModel
+fullname - str
+email - str
+hashPass - str
+ActiveOrderID - Array
+cart - Array
+contact No - Number
+
+OwnerModel
+email - str
+Hash - str
+
+
+Product 
+Image - Array
+Name = str
+description - str
+price - Number
+discPrice - Number
+
+
+Orders
+customerId - id
+ProductId -  Array
+quantity
+description - str
+completed - Boolean
+date
+

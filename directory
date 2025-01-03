@@ -1,0 +1,45 @@
+ecommerce-app/
+├── controllers/
+│   ├── authController.js
+│   ├── productController.js
+│   ├── orderController.js
+│   └── userController.js
+├── middlewares/
+│   ├── authMiddleware.js
+│   ├── errorHandler.js
+│   └── validateInput.js
+├── models/
+│   ├── Product.js
+│   ├── User.js
+│   ├── Order.js
+│   └── Cart.js
+├── routes/
+│   ├── authRoutes.js
+│   ├── productRoutes.js
+│   ├── orderRoutes.js
+│   └── userRoutes.js
+├── services/
+│   ├── emailService.js
+│   └── paymentService.js
+├── utils/
+│   ├── constants.js
+│   ├── db.js
+│   └── helpers.js
+├── views/ (if applicable)
+│   ├── HTML/
+│   │   └── loginPage.html
+│   ├── css/
+│   │   └── style.css
+│   └── js/
+│       └── script.js
+├── public/
+│   ├── images/
+│   ├── css/
+│   │   └── style.css
+│   └── js/
+│       └── main.js
+├── app.js
+├── package.json
+├── .env
+├── .gitignore
+└── README.md

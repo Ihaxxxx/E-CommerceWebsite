@@ -6,12 +6,16 @@ const productSchema = mongoose.Schema({
     },
     name: String,
     price:Number,
-    dicount:{
+    discount:{
         type : Number,
         default : 0 ,
     },
     productUploadedDate: { type: Date, default: Date.now },
-    inventory : Number
+    inventory :{
+        type : Number,
+        default : null,
+    },
+    description : String,
 });
 
 module.exports = mongoose.model("product",productSchema)

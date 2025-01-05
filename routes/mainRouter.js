@@ -8,11 +8,11 @@ app.use(express.static(path.join(__dirname,"public")))
 
 
 router.get("/",(req,res)=>{
-    res.sendFile(path.join(__dirname, "../views/signupPage.html"));
+    res.sendFile(path.join(__dirname, "../views/customer/signupPage.html"));
 })
 
 router.get("/loginPage",(req,res)=>{
-    res.sendFile(path.join(__dirname, "../views/loginPage.html"));
+    res.sendFile(path.join(__dirname, "../views/customer/loginPage.html"));
 })
 
 module.exports = router

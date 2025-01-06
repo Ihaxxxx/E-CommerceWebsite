@@ -5,15 +5,15 @@ const productModel = require("../models/productModel")
 const path = require('path')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser');
-app.use(bodyParser.json({ limit: '10mb' }));
-app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
+router.use(bodyParser.json({ limit: '64mb' }));
+router.use(bodyParser.urlencoded({ limit: '64mb', extended: true ,parameterLimit:50000 }));
 
 app.use(express.static(path.join(__dirname,"public")))
 
 router.get("/",(req,res)=>{
     res.json("hey")
 })
-
+ 
 router.post("/addproduct",async(req,res)=>{
     try {
         let {image,name,price,discount,description} = req.body

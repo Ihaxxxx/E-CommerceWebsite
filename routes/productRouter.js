@@ -5,11 +5,6 @@ const productModel = require("../models/productModel")
 const path = require('path')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser');
-router.use(bodyParser.json({ limit: '64mb' }));
-router.use(bodyParser.urlencoded({ limit: '64mb', extended: true ,parameterLimit:50000 }));
-
-app.use(express.static(path.join(__dirname,"public")))
-
 router.get("/",(req,res)=>{
     res.json("hey")
 })

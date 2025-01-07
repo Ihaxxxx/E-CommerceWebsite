@@ -8,7 +8,9 @@ const customerRouter = require('./routes/customerRouter')
 const mainRouter = require('./routes/mainRouter')
 const expressSession = require('express-session')
 const flash = require("connect-flash")
+const bodyParser = require('body-parser')
 require('dotenv').config();
+
 
 const db = require("./config/mongoose-connection")
 
@@ -22,6 +24,9 @@ app.use(
         secret:process.env.EXPRESS_SESSION_SECRET,
     })
 )
+
+app.use(bodyParser.json({ limit: '64mb' }));
+app.use(bodyParser.urlencoded({ limit: '64mb', extended: true }));
 
 app.use(flash())
 app.use(express.static(path.join(__dirname,"public")))

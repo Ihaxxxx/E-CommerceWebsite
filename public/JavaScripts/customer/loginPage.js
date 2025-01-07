@@ -12,7 +12,7 @@ document.getElementById("Login-Form").addEventListener("submit",async(event)=>{
     })
     let response = await data.json()
     if (response.success) {
-        console.log(response)
+        window.location.href = "/shop"
     }else{
         document.getElementById("userexist-error").classList.remove("hidden")
     }

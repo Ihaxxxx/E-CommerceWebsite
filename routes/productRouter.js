@@ -35,6 +35,20 @@ router.get("/seeproductsadminside",async(req,res)=>{
     }
 })
 
+// shop route to see all the products
+router.get("/shop",async(req,res)=>{
+    try {
+        let products = await productModel.find()
+        res.json(products)
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+router.get("/viewproduct",async(req,res)=>{
+    res.sendFile(path.join(__dirname, "../views/customer/ViewItem.html"));
+})
+
 router.get("/edit",async(req,res)=>{
     res.sendFile(path.join(__dirname, "../views/admin/EditProduct.html"));
 })
@@ -44,6 +58,7 @@ router.post("/getproductdata",async(req,res)=>{
     let product =await productModel.findById(id)
     res.json(product)
 })
+
 
 router.post("/editProductChanges",async(req,res)=>{
     let {image,name,price,discount,description} = req.body

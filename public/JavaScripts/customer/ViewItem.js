@@ -1,4 +1,5 @@
 
+
 window.onload = async function() {
     const cookieName = "token";
     const cookieValue = getCookieValue(cookieName);
@@ -74,8 +75,10 @@ function getCookieValue(cookieName) {
 
 document.getElementById("AddToCartBtn").addEventListener("submit", async (event)=>{
     event.preventDefault()
-    let quantity = document.getElementById("QuantityDropDown").value
+    let quantity = document.getElementById("ItemQuantity").value
     let productID = localStorage.getItem("productID")
+    console.log(quantity)
+    console.log(productID)
     let data = await fetch("/customer/addtocart",{
         method : "POST",
             headers : {
@@ -83,8 +86,10 @@ document.getElementById("AddToCartBtn").addEventListener("submit", async (event)
               },
               body: JSON.stringify({productID: productID,quantity:quantity})
     })
-    console.log(data.status === 200)
-    console.log(document.getElementById("error-bar-success").classList)
+    console.log(data)
+
+    // console.log(data.status === 200)
+    // console.log(document.getElementById("error-bar-success").classList)
     if (data.status === 200) {
         document.getElementById("error-bar-success").classList.remove("hidden")
     }else{

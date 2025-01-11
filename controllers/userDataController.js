@@ -5,10 +5,10 @@ const jwt = require('jsonwebtoken')
 const { generateToken } = require("../utilities/generateToken")
 
 module.exports.addToCart = async function (req, res) {
+  console.log(req.body)
     try {
         let productId = req.body.productID
         let quantity = req.body.quantity
-    
         const customer = await customerModel.findOneAndUpdate(
             { _id: req.user._id, 'cartDetails.product': productId },
             {

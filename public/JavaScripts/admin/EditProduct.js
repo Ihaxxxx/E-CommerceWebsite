@@ -35,8 +35,8 @@ window.onload = async function () {
                 `;
     });
     imageContainer.innerHTML = imgDiv;
-    addEventListenerToCross(fileArray)
     formSubmit(fileArray)
+    addEventListenerToCross(fileArray)
 };
 
 
@@ -55,7 +55,7 @@ function formSubmit(fileArray) {
             headers : {
                 'Content-Type': 'application/json'
               },
-              body: JSON.stringify({id:productID,image:fileArray,name:productName,price:productPrice,description:productDescription,dicount:productDiscount})
+              body: JSON.stringify({id:productID,image:fileArray,name:productName,price:productPrice,description:productDescription,discount:productDiscount})
         })
     
         let response = await data.json()

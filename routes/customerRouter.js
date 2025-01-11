@@ -18,6 +18,7 @@ router.post("/register", registerUser)
 router.get("/logout",logout)
 router.get("/cartdetails",isLoggedIn,CartDetails)
 router.post("/login", loginUser)
+
 router.post("/addtocart",isLoggedIn,addToCart)
 
 module.exports = router;

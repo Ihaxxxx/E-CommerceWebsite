@@ -5,6 +5,7 @@ const productModel = require("../models/productModel")
 const path = require('path')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser');
+
 router.get("/",(req,res)=>{
     res.json("hey")
 })
@@ -19,7 +20,7 @@ router.post("/addproduct",async(req,res)=>{
             discount,
             description,
         })
-        console.log(product)
+        // console.log(product)
     } catch (error) {
         console.log(error)
     }

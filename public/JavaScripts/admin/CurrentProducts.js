@@ -1,7 +1,7 @@
 window.onload =async function(){
     let data = await fetch("/product/seeproductsadminside")
     let response = await data.json()
-    console.log(response)
+    // console.log(response)
     let ProductDiv = ''
     Array.from(response).forEach((product)=>{
         ProductDiv += `              <div class="p-6 rounded-md bg-gray-200">

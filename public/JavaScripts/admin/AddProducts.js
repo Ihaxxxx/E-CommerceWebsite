@@ -10,6 +10,7 @@ document.getElementById("AddProduct-From").addEventListener("submit",async (even
   let productDescription = document.getElementById("productDescription").value
   let productPrice = document.getElementById("ProductPrice").value
   let productDiscount = document.getElementById("ProductDiscount").value
+  console.log(productDiscount)
     let data = await fetch("/product/addproduct",{
         method : "POST",
         headers : {
@@ -17,10 +18,8 @@ document.getElementById("AddProduct-From").addEventListener("submit",async (even
           },
           body: JSON.stringify({image:selectedImages,name:productName,price:productPrice,description:productDescription,dicount:productDiscount})
     })
-
     let response = await data.json()
     console.log(response)
-
 })
 
 document.getElementById('file-upload').addEventListener('change', handleFileSelect);

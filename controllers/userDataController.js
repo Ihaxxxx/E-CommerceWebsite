@@ -34,5 +34,6 @@ module.exports.addToCart = async function (req, res) {
 
 module.exports.CartDetails = async function(req,res) {
   let user =  await customerModel.findOne({id:req.user_id}).populate('cartDetails.product')
-  res.json(user.cartDetails)
+  // res.json(user.cartDetails)
+  console.log(user.cartDetails)
 }

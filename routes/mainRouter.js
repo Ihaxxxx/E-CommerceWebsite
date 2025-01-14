@@ -3,6 +3,7 @@ const router = express.Router()
 const userModel = require("../models/customerModel")
 const productModel = require("../models/productModel")
 const path = require('path')
+const { isLoggedIn } = require("../middlewares/isLoggedin")
 const app = express()
 app.use(express.static(path.join(__dirname,"public")))
 
@@ -22,7 +23,7 @@ router.get("/SignUp",(req,res)=>{
 router.get("/shop",(req,res)=>{
     res.sendFile(path.join(__dirname, "../views/customer/ShopPage.html"));
 })
-router.get("/cart",(req,res)=>{
+router.get("/cart",isLoggedIn,(req,res)=>{
     res.sendFile(path.join(__dirname, "../views/customer/Cart.html"));
 })
 

@@ -5,7 +5,7 @@ const app = express()
 app.use(express.static(path.join(__dirname,"public")))
 
 const {registerUser,loginUser,logout} = require("../controllers/userAuthorisation")
-const {addToCart,CartDetails} = require("../controllers/userDataController")
+const {addToCart,CartDetails,removeCart,decreaseQuantity,increaseQuantity} = require("../controllers/userDataController")
 const { isLoggedIn } = require("../middlewares/isLoggedin")
 
 
@@ -18,7 +18,9 @@ router.post("/register", registerUser)
 router.get("/logout",logout)
 router.get("/cartdetails",isLoggedIn,CartDetails)
 router.post("/login", loginUser)
-
 router.post("/addtocart",isLoggedIn,addToCart)
+router.post("/removefromcart",isLoggedIn,removeCart)
+router.post("/increasequantity" ,isLoggedIn,increaseQuantity)
+router.post("/decreasequantity",isLoggedIn,decreaseQuantity)
 
 module.exports = router;

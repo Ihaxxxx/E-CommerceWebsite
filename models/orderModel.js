@@ -31,6 +31,19 @@ const orderSchema = mongoose.Scheme({
         type : Boolean,
         default : false,
     },
+    email:{
+        type:String
+    },
+    address:{
+        type:String
+    },
+    city:{
+        type:String
+    },
+    country:{
+        type:String
+    },
+
 })
 
 

@@ -3,8 +3,7 @@ const userModel = require("../models/customerModel")
 
 module.exports.isLoggedIn = async function(req,res,next){
     if (!req.cookies.token) {
-        req.flash("error","you need to login first")
-        return res.redirect("/")
+        return res.redirect("/loginPage")
     }
     try {
         let decoded = jwt.verify(req.cookies.token,process.env.JWT_KEY)
@@ -13,6 +12,6 @@ module.exports.isLoggedIn = async function(req,res,next){
         next()
     } catch (err) {
         req.flash("error","something went wrong")
-        res.redirect("/")
+        res.redirect("/loginPage")
     }
 }

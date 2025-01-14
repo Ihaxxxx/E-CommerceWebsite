@@ -33,7 +33,30 @@ module.exports.addToCart = async function (req, res) {
 }
 
 module.exports.CartDetails = async function(req,res) {
-  let user =  await customerModel.findOne({id:req.user_id}).populate('cartDetails.product')
-  // res.json(user.cartDetails)
-  console.log(user.cartDetails)
+  let customer =  await customerModel.findOne({id:req.user_id}).populate('cartDetails.product')
+  res.json(customer.cartDetails)
+}
+
+module.exports.removeCart = async function(req,res) {
+  let customer = await customerModel.findOneAndUpdate(
+    { id: req.user_id },
+    { $pull: { "cartDetails": { product: req.body.id } } },
+    { new: true }
+  );
+}
+
+module.exports.increaseQuantity = async function(req,res) {
+  let customer = await customerModel.findOneAndUpdate(
+    { id: req.user_id, "cartDetails.product": req.body.id },
+    { "cartDetails.$.quantity": req.body.quantity },
+    { new: true }
+  );
+}
+
+module.exports.decreaseQuantity = async function(req,res) {
+  let customer = await customerModel.findOneAndUpdate(
+    { id: req.user_id, "cartDetails.product": req.body.id },
+    { "cartDetails.$.quantity": req.body.quantity },
+    { new: true }
+  );
 }

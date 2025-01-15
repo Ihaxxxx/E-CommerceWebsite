@@ -127,51 +127,10 @@
                 </div>
               </section>
       
-              <section aria-labelledby="payment-heading" class="mt-10">
-                <h2 id="payment-heading" class="text-lg font-medium text-gray-900">Payment details</h2>
-      
-                <div class="mt-6 grid grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-4">
-                  <div class="col-span-3 sm:col-span-4">
-                    <label for="name-on-card" class="block text-sm/6 font-medium text-gray-700">Name on card</label>
-                    <div class="mt-2">
-                      <input type="text" id="name-on-card" name="name-on-card" autocomplete="cc-name" class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                    </div>
-                  </div>
-      
-                  <div class="col-span-3 sm:col-span-4">
-                    <label for="card-number" class="block text-sm/6 font-medium text-gray-900">Card number</label>
-                    <div class="mt-2">
-                      <input type="text" id="card-number" name="card-number" autocomplete="cc-number" class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                    </div>
-                  </div>
-      
-                  <div class="col-span-2 sm:col-span-3">
-                    <label for="expiration-date" class="block text-sm/6 font-medium text-gray-700">Expiration date (MM/YY)</label>
-                    <div class="mt-2">
-                      <input type="text" name="expiration-date" id="expiration-date" autocomplete="cc-exp" class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                    </div>
-                  </div>
-      
-                  <div>
-                    <label for="cvc" class="block text-sm/6 font-medium text-gray-700">CVC</label>
-                    <div class="mt-2">
-                      <input type="text" name="cvc" id="cvc" autocomplete="csc" class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                    </div>
-                  </div>
-                </div>
-              </section>
-      
               <section aria-labelledby="shipping-heading" class="mt-10">
                 <h2 id="shipping-heading" class="text-lg font-medium text-gray-900">Shipping address</h2>
       
                 <div class="mt-6 grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-3">
-                  <div class="sm:col-span-3">
-                    <label for="company" class="block text-sm/6 font-medium text-gray-700">Company</label>
-                    <div class="mt-2">
-                      <input type="text" id="company" name="company" class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                    </div>
-                  </div>
-      
                   <div class="sm:col-span-3">
                     <label for="address" class="block text-sm/6 font-medium text-gray-700">Address</label>
                     <div class="mt-2">
@@ -199,36 +158,11 @@
                       <input type="text" id="region" name="region" autocomplete="address-level1" class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                     </div>
                   </div>
-      
-                  <div>
-                    <label for="postal-code" class="block text-sm/6 font-medium text-gray-700">Postal code</label>
-                    <div class="mt-2">
-                      <input type="text" id="postal-code" name="postal-code" autocomplete="postal-code" class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                    </div>
-                  </div>
                 </div>
               </section>
       
-              <section aria-labelledby="billing-heading" class="mt-10">
-                <h2 id="billing-heading" class="text-lg font-medium text-gray-900">Billing information</h2>
-      
-                <div class="mt-6 flex gap-3">
-                  <div class="flex h-6 shrink-0 items-center">
-                    <div class="group grid size-4 grid-cols-1">
-                      <input id="same-as-shipping" name="same-as-shipping" type="checkbox" checked class="col-start-1 row-start-1 appearance-none rounded border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto">
-                      <svg class="pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center stroke-white group-has-[:disabled]:stroke-gray-950/25" viewBox="0 0 14 14" fill="none">
-                        <path class="opacity-0 group-has-[:checked]:opacity-100" d="M3 8L6 11L11 3.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        <path class="opacity-0 group-has-[:indeterminate]:opacity-100" d="M3 7H11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                      </svg>
-                    </div>
-                  </div>
-                  <label for="same-as-shipping" class="text-sm/6 font-medium text-gray-900">Same as shipping information</label>
-                </div>
-              </section>
-      
-              <div class="mt-10 border-t border-gray-200 pt-6 sm:flex sm:items-center sm:justify-between">
-                <button type="submit" class="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:order-last sm:ml-6 sm:w-auto">Continue</button>
-                <p class="mt-4 text-center text-sm text-gray-500 sm:mt-0 sm:text-left">You won't be charged until the next step.</p>
+              <div class="">
+                <button type="submit" class="w-full mt-10 rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:order-last sm:w-auto">Place Order</button>
               </div>
             </div>
           </form>

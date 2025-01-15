@@ -112,7 +112,7 @@ function increaseDeccreaseQuantity() {
           },
           body: JSON.stringify({ id: productId, quantity: val })
         })
-      }, 5000);
+      }, 2000);
     })
   })
 
@@ -134,7 +134,7 @@ function increaseDeccreaseQuantity() {
             },
             body: JSON.stringify({ id: productId, quantity: val })
           })
-        }, 5000);
+        }, 2000);
       }
     })
   })
@@ -170,3 +170,8 @@ function decreaseAmount(quantity,productid){
   document.getElementById("Subtotal").innerHTML = cost + " Rs"
   document.getElementById("OrderTotal").innerHTML = (parseInt(document.getElementById("Subtotal").innerHTML.split(" ")[0]) + parseInt(document.getElementById("ShippingTotal").innerHTML.split(" ")[0])) + " Rs"
 }
+
+document.getElementById("CheckoutBtn").addEventListener("submit",async(event)=>{
+  event.preventDefault()
+  window.location.href = "/checkout"
+})

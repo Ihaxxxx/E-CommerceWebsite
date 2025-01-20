@@ -1,13 +1,5 @@
 window.onload = async () => {
-    const cookieName = "token";
-    const cookieValue = getCookieValue(cookieName);
-    document.querySelectorAll(".login-logout-btn").forEach(element => {
-        if (cookieValue == "") {
-            element.innerHTML = `<a href="/loginPage" class="text-sm/6 font-semibold text-white">Log in <span aria-hidden="true">&rarr;</span></a>`
-        }else{
-            element.innerHTML = `<a href="/customer/logout" class="text-sm/6 font-semibold text-white">Log Out <span aria-hidden="true">&rarr;</span></a>`
-        }
-    })
+    
     const data = await fetch("/product/shop")
     const productsArray = await data.json()
     let productsDiv = ""
@@ -49,7 +41,6 @@ function addEventListenerToAnchorTag() {
         })
     }
 }
-
 
 
 

@@ -3,9 +3,27 @@ window.onload = async function () {
   // Fetching Cart
   let dataOfItems = await fetch("/customer/cartdetails")
   let responseOfOItems = await dataOfItems.json()
+  console.log(responseOfOItems.length)
+
+  DisplayItems(responseOfOItems)
+
+  //checking if th cart is empty or not 
+  if (responseOfOItems.length == 0) {
+    document.getElementById("error-bar").classList.remove("hidden")
+  } 
+  checkoutClick(responseOfOItems)
+
+  // functions for increase and decrease of thjings
+  increaseDeccreaseQuantity()
+  removeItem()
+}
+
+
+
+function DisplayItems(response) {
   let dataContainer = ""
   // making cards for items
-  responseOfOItems.forEach(element => {
+  response.forEach(element => {
     discountedPrice = element.product.price - (element.product.price * (element.product.discount / 100))
     dataContainer += `            <li id="${element.product._id}" class="flex py-6 sm:py-10">
               <div class="shrink-0">
@@ -66,14 +84,14 @@ window.onload = async function () {
 
   // Fetching Prices on load 
   let totalPrice = 0
-  if (responseOfOItems.length == 0) {
+  if (response.length == 0) {
     Array.from(document.getElementById("AmountBox").getElementsByTagName("dd")).forEach(element => {
       element.innerHTML = 0 + " Rs"
     })
     document.getElementById("SummaryBox").classList.remove("hidden")
   } else {
     let cost = 0
-    responseOfOItems.forEach(element => {
+    response.forEach(element => {
       if (element.product.discount == 0) {
         cost += element.product.price * element.quantity
       } else {
@@ -86,10 +104,6 @@ window.onload = async function () {
     document.getElementById("SummaryBox").classList.remove("hidden")
   }
 
-
-  // functions for increase and decrease of thjings
-  increaseDeccreaseQuantity()
-  removeItem()
 }
 
 
@@ -103,7 +117,7 @@ function increaseDeccreaseQuantity() {
       let productQuantity = val
       let productId = btn.closest('li').id
       // increase in amount
-      increaseAmount(productQuantity,productId)
+      increaseAmount(productQuantity, productId)
       setTimeout(async () => {
         let data = await fetch("/customer/increasequantity", {
           method: "POST",
@@ -125,7 +139,7 @@ function increaseDeccreaseQuantity() {
         let productId = btn.closest('li').id
         let productQuantity = val
         // decrease in amount
-        decreaseAmount(productQuantity,productId)
+        decreaseAmount(productQuantity, productId)
         setTimeout(async () => {
           let data = await fetch("/customer/decreasequantity", {
             method: "POST",
@@ -160,18 +174,26 @@ function removeItem() {
 }
 
 // change of amounts
-function increaseAmount(quantity,productid){
-  let cost = parseInt(document.getElementById("Subtotal").innerHTML.split(" ")[0])+parseInt((document.getElementById(productid).getElementsByClassName("productPrice")[0].innerHTML).split(" ")[0])
+function increaseAmount(quantity, productid) {
+  let cost = parseInt(document.getElementById("Subtotal").innerHTML.split(" ")[0]) + parseInt((document.getElementById(productid).getElementsByClassName("productPrice")[0].innerHTML).split(" ")[0])
   document.getElementById("Subtotal").innerHTML = cost + " Rs"
   document.getElementById("OrderTotal").innerHTML = (parseInt(document.getElementById("Subtotal").innerHTML.split(" ")[0]) + parseInt(document.getElementById("ShippingTotal").innerHTML.split(" ")[0])) + " Rs"
 }
-function decreaseAmount(quantity,productid){
-  let cost = parseInt(document.getElementById("Subtotal").innerHTML.split(" ")[0])-parseInt((document.getElementById(productid).getElementsByClassName("productPrice")[0].innerHTML).split(" ")[0])
+function decreaseAmount(quantity, productid) {
+  let cost = parseInt(document.getElementById("Subtotal").innerHTML.split(" ")[0]) - parseInt((document.getElementById(productid).getElementsByClassName("productPrice")[0].innerHTML).split(" ")[0])
   document.getElementById("Subtotal").innerHTML = cost + " Rs"
   document.getElementById("OrderTotal").innerHTML = (parseInt(document.getElementById("Subtotal").innerHTML.split(" ")[0]) + parseInt(document.getElementById("ShippingTotal").innerHTML.split(" ")[0])) + " Rs"
 }
 
-document.getElementById("CheckoutBtn").addEventListener("submit",async(event)=>{
-  event.preventDefault()
-  window.location.href = "/checkout"
-})
+
+function checkoutClick(response) {
+  document.getElementById("CheckoutBtn").addEventListener("submit", async (event) => {
+    event.preventDefault()
+    if (response.length != 0) {
+      window.location.href = "/checkout"
+    }
+  })
+}
+
+
+

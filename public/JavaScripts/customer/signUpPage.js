@@ -19,8 +19,12 @@ document.getElementById("signup-form").addEventListener("submit",async (event)=>
         if (!response.success) {
         document.getElementById("userexist-error").classList.remove("hidden")
         }
+        if (response.success) {
+            window.location.href = "/shop"
+        }
     }else{
         // display off error if user is passwords dont match
         document.getElementById("password-error").classList.remove("hidden")
     }
+
 })

@@ -31,6 +31,8 @@
         <a href="#" class="text-sm/6 font-semibold text-white">About</a>
         <a href="#" class="text-sm/6 font-semibold text-white">Contact</a>
         <a href="/cart" class="text-sm/6 font-semibold text-white">Cart</a>
+        <a href="/order" class="text-sm/6 font-semibold text-white">Orders</a>
+
       </div>
       <div id="" class="hidden lg:flex lg:flex-1 lg:justify-end login-logout-btn">
         <!-- <a href="/loginPage" class="text-sm/6 font-semibold text-white">Log in <span aria-hidden="true">&rarr;</span></a> -->
@@ -38,7 +40,7 @@
       </div>
     </nav>
     <!-- Mobile menu, show/hide based on menu open state. -->
-    <div class="lg:hidden" role="dialog" aria-modal="true">
+    <div class="hidden lg:hidden" role="dialog" aria-modal="true">
       <!-- Background backdrop, show/hide based on slide-over state. -->
       <div class="fixed inset-0 z-10"></div>
       <div
@@ -67,6 +69,8 @@
                 class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-gray-800">Contact</a>
               <a href="/cart"
                 class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-gray-800">Cart</a>
+              <a href="/order"
+                class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-gray-800">Orders</a>
             </div>
             <div class="py-6 login-logout-btn">
               <!-- <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-white hover:bg-gray-800">Log in</a> -->
@@ -76,7 +80,12 @@
       </div>
     </div>
   </header>
-
+  <div id="error-bar-success" class="hidden items-center justify-center flex">
+    <p class="bg-green-500 text-white p-3 mt-2">Order Placed Successfully</p>
+  </div>
+  <div id="error-bar-falure" class="hidden items-center justify-center flex">
+    <p class="bg-red-500 text-white p-3 mt-2">Encountered An Error Please try again later</p>
+  </div>
 
   <main>
     <div class="bg-white">
@@ -92,52 +101,25 @@
           <div class="mx-auto max-w-lg lg:max-w-none">
             <h2 id="summary-heading" class="text-lg font-medium text-gray-900">Order summary</h2>
 
-            <ul role="list" class="divide-y divide-gray-200 text-sm font-medium text-gray-900">
-              <li class="flex items-start space-x-4 py-6">
-                <img src="https://tailwindui.com/plus/img/ecommerce-images/checkout-page-04-product-01.jpg"
-                  alt="Moss green canvas compact backpack with double top zipper, zipper front pouch, and matching carry handle and backpack straps."
-                  class="size-20 flex-none rounded-md object-cover">
-                <div class="flex-auto space-y-1">
-                  <h3>Micro Backpack</h3>
-                  <p class="text-gray-500">Moss</p>
-                  <p class="text-gray-500">5L</p>
-                </div>
-                <p class="flex-none text-base font-medium">$70.00</p>
-              </li>
-              <li class="flex items-start space-x-4 py-6">
-                <img src="https://tailwindui.com/plus/img/ecommerce-images/checkout-page-04-product-01.jpg"
-                  alt="Moss green canvas compact backpack with double top zipper, zipper front pouch, and matching carry handle and backpack straps."
-                  class="size-20 flex-none rounded-md object-cover">
-                <div class="flex-auto space-y-1">
-                  <h3>Micro Backpack</h3>
-                  <p class="text-gray-500">Moss</p>
-                  <p class="text-gray-500">5L</p>
-                </div>
-                <p class="flex-none text-base font-medium">$70.00</p>
-              </li>
-
+            <ul id="productDisplayList" role="list" class="divide-y divide-gray-200 text-sm font-medium text-gray-900">
+              <!-- product Display -->
               <!-- More products... -->
             </ul>
 
             <dl class="hidden space-y-6 border-t border-gray-200 pt-6 text-sm font-medium text-gray-900 lg:block">
               <div class="flex items-center justify-between">
                 <dt class="text-gray-600">Subtotal</dt>
-                <dd>$320.00</dd>
+                <dd class="Subtotal">$320.00</dd>
               </div>
 
               <div class="flex items-center justify-between">
                 <dt class="text-gray-600">Shipping</dt>
-                <dd>$15.00</dd>
-              </div>
-
-              <div class="flex items-center justify-between">
-                <dt class="text-gray-600">Taxes</dt>
-                <dd>$26.80</dd>
+                <dd>1000 Rs</dd>
               </div>
 
               <div class="flex items-center justify-between border-t border-gray-200 pt-6">
                 <dt class="text-base">Total</dt>
-                <dd class="text-base">$361.80</dd>
+                <dd class="text-base totalCost"></dd>
               </div>
             </dl>
 
@@ -146,13 +128,7 @@
                 <div class="mx-auto max-w-lg">
                   <button type="button" class="flex w-full items-center py-6 font-medium" aria-expanded="false">
                     <span class="mr-auto text-base">Total</span>
-                    <span class="mr-2 text-base">$361.80</span>
-                    <svg class="size-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
-                      data-slot="icon">
-                      <path fill-rule="evenodd"
-                        d="M9.47 6.47a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 1 1-1.06 1.06L10 8.06l-3.72 3.72a.75.75 0 0 1-1.06-1.06l4.25-4.25Z"
-                        clip-rule="evenodd" />
-                    </svg>
+                    <span class="mr-2 text-base totalCost"></span>
                   </button>
                 </div>
               </div>
@@ -184,17 +160,12 @@
                   <dl class="mx-auto max-w-lg space-y-6">
                     <div class="flex items-center justify-between">
                       <dt class="text-gray-600">Subtotal</dt>
-                      <dd>$320.00</dd>
+                      <dd class="Subtotal"></dd>
                     </div>
 
                     <div class="flex items-center justify-between">
                       <dt class="text-gray-600">Shipping</dt>
-                      <dd>$15.00</dd>
-                    </div>
-
-                    <div class="flex items-center justify-between">
-                      <dt class="text-gray-600">Taxes</dt>
-                      <dd>$26.80</dd>
+                      <dd class="Shipping">1000 Rs</dd>
                     </div>
                   </dl>
                 </div>
@@ -203,7 +174,7 @@
           </div>
         </section>
 
-        <form class="px-4 pb-36 pt-16 sm:px-6 lg:col-start-1 lg:row-start-1 lg:px-0 lg:pb-16">
+        <form id="orderDetailsForm" class="px-4 pb-36 pt-16 sm:px-6 lg:col-start-1 lg:row-start-1 lg:px-0 lg:pb-16">
           <div class="mx-auto max-w-lg lg:max-w-none">
             <section aria-labelledby="contact-info-heading">
               <h2 id="contact-info-heading" class="text-lg font-medium text-gray-900">Contact information</h2>
@@ -211,7 +182,7 @@
               <div class="mt-6">
                 <label for="email-address" class="block text-sm/6 font-medium text-gray-700">Email address</label>
                 <div class="mt-2">
-                  <input type="email" id="email-address" name="email-address" autocomplete="email"
+                  <input type="email" id="email-address" name="email-address" autocomplete="email" required
                     class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                 </div>
               </div>
@@ -224,7 +195,7 @@
                 <div class="sm:col-span-3">
                   <label for="address" class="block text-sm/6 font-medium text-gray-700">Address</label>
                   <div class="mt-2">
-                    <input type="text" id="address" name="address" autocomplete="street-address"
+                    <input type="text" id="address" name="address" autocomplete="street-address" required
                       class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                   </div>
                 </div>
@@ -233,7 +204,7 @@
                   <label for="apartment" class="block text-sm/6 font-medium text-gray-700">Apartment, suite,
                     etc.</label>
                   <div class="mt-2">
-                    <input type="text" id="apartment" name="apartment"
+                    <input type="text" id="apartment" name="apartment" required
                       class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                   </div>
                 </div>
@@ -241,7 +212,7 @@
                 <div>
                   <label for="city" class="block text-sm/6 font-medium text-gray-700">City</label>
                   <div class="mt-2">
-                    <input type="text" id="city" name="city" autocomplete="address-level2"
+                    <input type="text" id="city" name="city" autocomplete="address-level2" required
                       class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                   </div>
                 </div>
@@ -249,9 +220,18 @@
                 <div>
                   <label for="region" class="block text-sm/6 font-medium text-gray-700">State / Province</label>
                   <div class="mt-2">
-                    <input type="text" id="region" name="region" autocomplete="address-level1"
+                    <input type="text" id="region" name="region" autocomplete="address-level1" required
                       class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                   </div>
+                </div>
+              </div>
+              <div class="sm:col-span-3">
+                <label for="Instructions" class="mt-5 block text-sm/6 font-medium text-gray-700">Add Special
+                  Instructions</label>
+                <div class="mt-2">
+                  <textarea 
+                    class="block w-full resize-none rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                    name="Instructions" id="Instructions"></textarea>
                 </div>
               </div>
             </section>

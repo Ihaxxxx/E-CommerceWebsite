@@ -31,9 +31,11 @@
         <a href="#" class="text-sm/6 font-semibold text-white">About</a>
         <a href="#" class="text-sm/6 font-semibold text-white">Contact</a>
         <a href="/cart" class="text-sm/6 font-semibold text-white">Cart</a>
+        <a href="/order" class="text-sm/6 font-semibold text-white">Orders</a>
       </div>
       <div id class="hidden lg:flex lg:flex-1 lg:justify-end login-logout-btn">
-        <a href="/customer/logout" class="text-sm/6 font-semibold text-white">Log Out <span aria-hidden="true">&rarr;</span></a>
+        <a href="/customer/logout" class="text-sm/6 font-semibold text-white">Log Out <span
+            aria-hidden="true">&rarr;</span></a>
       </div>
     </nav>
     <!-- Mobile menu, show/hide based on menu open state. -->
@@ -66,15 +68,22 @@
                 class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-gray-800">Contact</a>
               <a href="/cart"
                 class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-gray-800">Cart</a>
+              <a href="/order"
+                class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-gray-800">Orders</a>
             </div>
             <div class="py-6 login-logout-btn">
-              <a href="/customer/logout" class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-white hover:bg-gray-800">Log Out</a>
+              <a href="/customer/logout"
+                class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-white hover:bg-gray-800">Log
+                Out</a>
             </div>
           </div>
         </div>
       </div>
     </div>
   </header>
+  <div id="error-bar" class="hidden items-center justify-center flex">
+    <p class="bg-red-500 text-white p-3 mt-2">Cart Is Empty </p>
+  </div>
   <div class="bg-white">
     <div class="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
       <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">

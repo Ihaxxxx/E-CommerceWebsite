@@ -87,9 +87,6 @@ document.getElementById("AddToCartBtn").addEventListener("submit", async (event)
               body: JSON.stringify({productID: productID,quantity:quantity})
     })
     console.log(data)
-
-    // console.log(data.status === 200)
-    // console.log(document.getElementById("error-bar-success").classList)
     if (data.status === 200) {
         document.getElementById("error-bar-success").classList.remove("hidden")
     }else{

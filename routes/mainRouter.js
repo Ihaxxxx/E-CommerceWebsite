@@ -29,5 +29,8 @@ router.get("/cart",isLoggedIn,(req,res)=>{
 router.get("/checkout",isLoggedIn,(req,res)=>{
     res.sendFile(path.join(__dirname, "../views/customer/CheckOut.html"));
 })
+router.get("/thankyou",isLoggedIn,(req,res)=>{
+    res.sendFile(path.join(__dirname, "../views/customer/ThankYou.html"));
+})
 
 module.exports = router

@@ -5,7 +5,7 @@ const app = express()
 app.use(express.static(path.join(__dirname,"public")))
 
 const {registerUser,loginUser,logout} = require("../controllers/userAuthorisation")
-const {addToCart,CartDetails,removeCart,decreaseQuantity,increaseQuantity} = require("../controllers/userDataController")
+const {addToCart,CartDetails,removeCart,decreaseQuantity,increaseQuantity,placeOrder,getOrderDetails} = require("../controllers/userDataController")
 const { isLoggedIn } = require("../middlewares/isLoggedin")
 
 
@@ -17,10 +17,12 @@ router.get("/", function (req, res) {
 router.post("/register", registerUser)
 router.get("/logout",logout)
 router.get("/cartdetails",isLoggedIn,CartDetails)
+router.get("/getorderdetails",isLoggedIn,getOrderDetails)
 router.post("/login", loginUser)
 router.post("/addtocart",isLoggedIn,addToCart)
 router.post("/removefromcart",isLoggedIn,removeCart)
 router.post("/increasequantity" ,isLoggedIn,increaseQuantity)
 router.post("/decreasequantity",isLoggedIn,decreaseQuantity)
+router.post("/placeorder",isLoggedIn,placeOrder)
 
 module.exports = router;

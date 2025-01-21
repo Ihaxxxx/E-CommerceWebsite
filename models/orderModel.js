@@ -1,11 +1,14 @@
 var mongoose = require('mongoose');
 
-const orderSchema = mongoose.Scheme({
+const orderSchema = mongoose.Schema({
     customerID : {
         type : mongoose.Schema.Types.ObjectId,
         ref : "customer"
     },
-    orderNo : Number,
+    orderNo : {
+        type: Number,
+        default: 0,
+    },
     productDetails: [
         {
             product: {
@@ -40,7 +43,7 @@ const orderSchema = mongoose.Scheme({
     city:{
         type:String
     },
-    country:{
+    state:{
         type:String
     },
 

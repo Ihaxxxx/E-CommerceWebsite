@@ -1,4 +1,4 @@
-
+ 
 window.onload = async function () {
   // Fetching Cart
   let dataOfItems = await fetch("/customer/cartdetails")

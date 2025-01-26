@@ -26,6 +26,7 @@ window.onload = async () => {
 function addEventListenerToAnchorTag() {
     const cookieName = "token";
     const cookieValue = getCookieValue(cookieName);
+
     if (cookieValue != "") {
         document.querySelectorAll(".anchorTagOfProducts").forEach(element =>{
             element.addEventListener("click" , (event)=>{
@@ -34,7 +35,7 @@ function addEventListenerToAnchorTag() {
         })
     }else{
         document.querySelectorAll(".anchorTagOfProducts").forEach(element =>{
-            element.addEventListener("click" , (event)=>{
+            element.addEventListener("click", (event)=>{
                 event.preventDefault()
                 document.getElementById("error-bar").classList.remove("hidden")
             })
@@ -47,6 +48,7 @@ function addEventListenerToAnchorTag() {
 
 function getCookieValue(cookieName) {
     const cookies = document.cookie.split(';');
+    console.log(cookies)
     for (let cookie of cookies) {
         cookie = cookie.trim();
         if (cookie.startsWith(cookieName + "=")) {

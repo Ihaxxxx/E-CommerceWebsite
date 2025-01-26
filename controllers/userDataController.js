@@ -89,6 +89,5 @@ module.exports.placeOrder = async function(req,res) {
 
 module.exports.getOrderDetails = async function (req,res) {
   let customer = await customerModel.findOne({id:req.user_id}).populate('activeOrder')
-  console.log(typeof(customer))
-  
+  res.json(customer.activeOrder)
 }

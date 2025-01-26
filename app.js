@@ -9,11 +9,14 @@ const mainRouter = require('./routes/mainRouter')
 const expressSession = require('express-session')
 const flash = require("connect-flash")
 const bodyParser = require('body-parser')
+const cors = require('cors')
 require('dotenv').config();
 
 
 const db = require("./config/mongoose-connection")
 
+
+app.use(cors());
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())

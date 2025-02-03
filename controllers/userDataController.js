@@ -89,6 +89,7 @@ module.exports.placeOrder = async function(req,res) {
 
 module.exports.getOrderDetails = async function (req,res) {
   let customer = await customerModel.findOne({id:req.user_id}).populate('activeOrder')
-  console.log(typeof(customer))
-  
+  let orderId = customer.activeOrder[customer.activeOrder.length-1]
+  let order = await orderModel.findOne({id:req.user_id}).populate('productDetails.product')
+  res.json(order)
 }
